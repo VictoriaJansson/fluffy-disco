@@ -25,7 +25,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
+package com.example.quicklauncher;
 
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        if (getIntent().hasExtra("org.mentorschool.quicklauncher")){
+            TextView tv = (TextView)findViewById(R.id.textView);
+            String text = getIntent().getExtras().getString("org.mentorschool.quicklauncher");
+            tv.setText(text);
+        }
+    }
+}
         // Attempts to launch an activity outside our app
         Button googleBtn = (Button) findViewById(R.id.googleBut);
         googleBtn.setOnClickListener(new View.OnClickListener() {
